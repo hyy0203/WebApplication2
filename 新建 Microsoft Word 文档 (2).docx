@@ -3,469 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>萌娃拼音乐园 - 幼儿专属版</title>
+    <title>宝宝学拼音 - 四模块版</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
-            background: linear-gradient(120deg, #fff9e6, #fef4f8);
-            font-family: "微软雅黑", "幼圆", sans-serif;
-            padding: 12px;
-            overflow-x: hidden;
+            background-color: #f5f9ff;
+            font-family: "微软雅黑", sans-serif;
+            padding: 15px;
         }
-        /* 顶部标题栏 */
-        .header {
-            background: linear-gradient(90deg, #ff6b9d, #ff9a76);
-            border-radius: 30px;
-            padding: 18px 10px;
+        /* 顶部标题 */
+        .top-title {
             text-align: center;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 10px rgba(255,107,157,0.3);
-        }
-
-            .header h1 {
-                color: #fff;
-                font-size: 42px;
-                font-weight: bold;
-                text-shadow: 2px 2px 3px rgba(0,0,0,0.1);
-            }
-
-            .header p {
-                color: #fffdfb;
-                font-size: 18px;
-                margin-top: 5px;
-            }
-        /* 通用模块样式 - 4大模块差异化配色 */
-        .pinyin-module {
-            margin: 22px 0;
-            padding: 25px 15px;
-            border-radius: 25px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-            border: 3px solid #fff;
-        }
-        /* 模块1 教学-声母认读 配色（清新蓝） */
-        .module1 {
-            background: linear-gradient(135deg, #e6f7ff, #d1edff);
-            border-color: #74c0fc;
-        }
-        /* 模块2 教学-韵母认读 配色（活力粉） */
-        .module2 {
-            background: linear-gradient(135deg, #ffeef8, #ffd8e8);
-            border-color: #ff85b3;
-        }
-        /* 模块3 教学-拼音拼读 配色（阳光黄） */
-        .module3 {
-            background: linear-gradient(135deg, #fff9e6, #fff3cd);
-            border-color: #ffd43b;
-        }
-        /* 模块4 检测-综合闯关 配色（森系绿） */
-        .module4 {
-            background: linear-gradient(135deg, #e8fff3, #d4f8e6);
-            border-color: #69db7c;
-        }
-        /* 模块标题通用样式 */
-        .module-title {
-            text-align: center;
-            font-size: 35px;
+            font-size: 45px;
+            color: #ff5c87;
             font-weight: bold;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
+            margin: 10px 0 25px;
         }
-
-        .module1 .module-title {
-            color: #228be6;
+        /* 通用模块样式（4个模块统一风格） */
+        .pinyin-module {
+            margin: 25px 0;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 22px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border: 1px solid #f0f4ff;
         }
-
-        .module2 .module-title {
-            color: #f767a7;
-        }
-
-        .module3 .module-title {
-            color: #ff9800;
-        }
-
-        .module4 .module-title {
-            color: #28c76f;
-        }
-
-        .title-icon {
-            font-size: 30px;
-        }
-        /* 教学引导栏 - 专属教学功能 */
-        .teach-tip {
-            background: #fff;
-            border-radius: 15px;
-            padding: 12px;
-            margin-bottom: 20px;
-            font-size: 19px;
+        .module-title {
+            font-size: 32px;
+            color: #2f54d0;
             text-align: center;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e6f0ff;
         }
-
-        .module1 .teach-tip {
-            border-left: 5px solid #228be6;
-            color: #343a40;
-        }
-
-        .module2 .teach-tip {
-            border-left: 5px solid #f767a7;
-            color: #343a40;
-        }
-
-        .module3 .teach-tip {
-            border-left: 5px solid #ff9800;
-            color: #343a40;
-        }
-
-        .module4 .teach-tip {
-            border-left: 5px solid #28c76f;
-            color: #343a40;
-        }
-        /* 拼音列表&项目样式 */
+        /* 拼音项+按钮通用样式 */
         .item-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 18px;
             justify-content: center;
-            margin-bottom: 15px;
         }
-
         .pinyin-item {
-            background: #fff;
-            padding: 12px 15px;
-            border-radius: 20px;
-            font-size: 40px;
-            color: #212529;
+            font-size: 38px;
+            color: #2d3436;
             display: flex;
             align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+            gap: 8px;
         }
-        /* 按钮样式 - 大尺寸易点击 多色区分功能 */
-        .play-btn {
-            padding: 8px 16px;
-            font-size: 18px;
-            border: none;
-            border-radius: 20px;
+        .play-btn, .spell-btn, .game-btn {
+            padding: 8px 18px;
+            font-size: 17px;
             color: #fff;
-            cursor: pointer;
-            background: #74c0fc;
-            width: 100px;
-            transition: all 0.2s;
-        }
-
-            .play-btn:hover {
-                background: #228be6;
-                transform: scale(1.05);
-            }
-
-        .spell-btn {
-            padding: 10px 20px;
-            font-size: 18px;
-            border: none;
-            border-radius: 20px;
-            color: #fff;
-            cursor: pointer;
-            background: #ff9800;
-            width: 130px;
-            transition: all 0.2s;
-        }
-
-            .spell-btn:hover {
-                background: #e67e22;
-                transform: scale(1.05);
-            }
-
-        .check-btn, .start-btn, .result-btn {
-            padding: 12px 25px;
-            font-size: 19px;
             border: none;
             border-radius: 25px;
-            color: #fff;
             cursor: pointer;
-            margin: 8px 5px;
-            transition: all 0.2s;
+            width: 110px;
+            transition: background-color 0.2s;
         }
-
-        .start-btn {
-            background: #28c76f;
-        }
-
-            .start-btn:hover {
-                background: #20bf6b;
-                transform: scale(1.05);
-            }
-
-        .check-btn {
-            background: #f767a7;
-        }
-
-            .check-btn:hover {
-                background: #f53b79;
-                transform: scale(1.05);
-            }
-
-        .result-btn {
-            background: #228be6;
-        }
-
-            .result-btn:hover {
-                background: #1971c2;
-                transform: scale(1.05);
-            }
+        .play-btn { background-color: #66b2ff; }
+        .play-btn:hover { background-color: #2f86eb; }
+        .spell-btn { background-color: #ff9e42; }
+        .spell-btn:hover { background-color: #ff8a18; }
+        .game-btn { background-color: #7873f5; }
+        .game-btn:hover { background-color: #5d56e9; }
         /* 拼读模块专属样式 */
         .spell-group {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
-            font-size: 40px;
-            margin: 20px 0;
-            padding: 15px;
-            background: #fff;
-            border-radius: 20px;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.05);
-        }
-
-        .spell-item {
-            color: #ff9800;
-            font-weight: bold;
-            font-size: 42px;
-        }
-        /* 检测模块专属样式 - 答题区+结果区 */
-        .check-area {
-            background: #fff;
-            border-radius: 20px;
-            padding: 20px;
-            text-align: center;
-            margin: 10px 0;
-        }
-
-        .check-title {
-            font-size: 22px;
-            color: #28c76f;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-
-        .option-list {
-            display: flex;
-            flex-wrap: wrap;
             gap: 12px;
-            justify-content: center;
-            margin: 20px 0;
+            font-size: 36px;
+            margin: 15px 0;
         }
-
-        .option-item {
-            padding: 15px 20px;
-            background: #e8fff3;
-            border: 2px solid #69db7c;
-            border-radius: 15px;
-            font-size: 32px;
-            color: #212529;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-            .option-item:hover {
-                background: #69db7c;
-                color: #fff;
-            }
-
-        .result-box {
-            margin-top: 20px;
-            font-size: 20px;
-            color: #343a40;
-            padding: 15px;
-            border-radius: 15px;
-            display: none;
-        }
-
-        .correct {
-            background: #d4f8e6;
-            color: #28c76f;
+        .spell-item {
+            color: #ff5c87;
             font-weight: bold;
         }
-
-        .wrong {
-            background: #ffe8e8;
-            color: #e74c3c;
-            font-weight: bold;
+        /* 闯关模块专属样式 */
+        .game-box {
+            text-align: center;
+            padding: 10px 0;
         }
-        /* 适配手机端 按钮放大 */
-        @media screen and (max-width: 768px) {
-            .pinyin-item {
-                font-size: 36px;
-            }
-
-            .spell-item {
-                font-size: 38px;
-            }
-
-            .option-item {
-                font-size: 28px;
-                padding: 12px 18px;
-            }
-
-            .check-btn, .start-btn, .result-btn {
-                padding: 10px 20px;
-                font-size: 18px;
-            }
+        .game-tip {
+            font-size: 18px;
+            color: #666;
+            margin: 10px 0 15px;
         }
     </style>
 </head>
 <body>
-    <!-- 顶部标题栏 -->
-    <header class="header">
-        <h1>萌娃拼音乐园</h1>
-        <p>快乐学拼音 · 轻松闯关卡</p>
-    </header>
+    <!-- 顶部标题 -->
+    <h1 class="top-title">宝宝拼音小课堂</h1>
 
-    <!-- 模块1 【教学】声母认读 - 带发音+口型教学 -->
-    <section class="pinyin-module module1">
-        <h2 class="module-title">
-            <span class="title-icon">🔵</span>模块1 声母认读（基础篇）
-        </h2>
-        <!-- 专属教学引导 -->
-        <div class="teach-tip">
-            教学小课堂：声母要读得轻又短哦！b像小广播，p像小山坡，跟着按钮读起来吧~
-        </div>
+    <!-- 模块1：声母认读（核心基础） -->
+    <section class="pinyin-module">
+        <h2 class="module-title">模块1 - 声母认读</h2>
         <div class="item-list">
-            <div class="pinyin-item" data-pinyin="b">b <button class="play-btn">跟读</button></div>
-            <div class="pinyin-item" data-pinyin="p">p <button class="play-btn">跟读</button></div>
-            <div class="pinyin-item" data-pinyin="m">m <button class="play-btn">跟读</button></div>
-            <div class="pinyin-item" data-pinyin="f">f <button class="play-btn">跟读</button></div>
-            <div class="pinyin-item" data-pinyin="d">d <button class="play-btn">跟读</button></div>
-            <div class="pinyin-item" data-pinyin="t">t <button class="play-btn">跟读</button></div>
-            <div class="pinyin-item" data-pinyin="n">n <button class="play-btn">跟读</button></div>
-            <div class="pinyin-item" data-pinyin="l">l <button class="play-btn">跟读</button></div>
+            <div class="pinyin-item" data-pinyin="b">b <button class="play-btn">发音</button></div>
+            <div class="pinyin-item" data-pinyin="p">p <button class="play-btn">发音</button></div>
+            <div class="pinyin-item" data-pinyin="m">m <button class="play-btn">发音</button></div>
+            <div class="pinyin-item" data-pinyin="f">f <button class="play-btn">发音</button></div>
+            <div class="pinyin-item" data-pinyin="d">d <button class="play-btn">发音</button></div>
+            <div class="pinyin-item" data-pinyin="t">t <button class="play-btn">发音</button></div>
+            <div class="pinyin-item" data-pinyin="n">n <button class="play-btn">发音</button></div>
+            <div class="pinyin-item" data-pinyin="l">l <button class="play-btn">发音</button></div>
         </div>
     </section>
 
-    <!-- 模块2 【教学】韵母认读 - 带发音+声调教学 -->
-    <section class="pinyin-module module2">
-        <h2 class="module-title">
-            <span class="title-icon">🌸</span>模块2 韵母认读（基础篇）
-        </h2>
-        <!-- 专属教学引导 -->
-        <div class="teach-tip">
-            教学小课堂：韵母要读得响又长！a张大嘴，o拢圆嘴，i像小水滴，四声要读准哦~
-        </div>
+    <!-- 模块2：韵母认读（核心基础） -->
+    <section class="pinyin-module">
+        <h2 class="module-title">模块2 - 韵母认读</h2>
         <div class="item-list">
-            <div class="pinyin-item" data-pinyin="a">a <button class="play-btn">跟读</button></div>
-            <div class="pinyin-item" data-pinyin="o">o <button class="play-btn">跟读</button></div>
-            <div class="pinyin-item" data-pinyin="e">e <button class="play-btn">跟读</button></div>
-            <div class="pinyin-item" data-pinyin="i">i <button class="play-btn">跟读</button></div>
-            <div class="pinyin-item" data-pinyin="u">u <button class="play-btn">跟读</button></div>
-            <div class="pinyin-item" data-pinyin="ü">ü <button class="play-btn">跟读</button></div>
-            <div class="pinyin-item" data-pinyin="ai">ai <button class="play-btn">跟读</button></div>
-            <div class="pinyin-item" data-pinyin="ei">ei <button class="play-btn">跟读</button></div>
+            <div class="pinyin-item" data-pinyin="a">a <button class="play-btn">发音</button></div>
+            <div class="pinyin-item" data-pinyin="o">o <button class="play-btn">发音</button></div>
+            <div class="pinyin-item" data-pinyin="e">e <button class="play-btn">发音</button></div>
+            <div class="pinyin-item" data-pinyin="i">i <button class="play-btn">发音</button></div>
+            <div class="pinyin-item" data-pinyin="u">u <button class="play-btn">发音</button></div>
+            <div class="pinyin-item" data-pinyin="ü">ü <button class="play-btn">发音</button></div>
+            <div class="pinyin-item" data-pinyin="ai">ai <button class="play-btn">发音</button></div>
+            <div class="pinyin-item" data-pinyin="ei">ei <button class="play-btn">发音</button></div>
         </div>
     </section>
 
-    <!-- 模块3 【教学】拼音拼读 - 两拼+三拼 带拼读教学 -->
-    <section class="pinyin-module module3">
-        <h2 class="module-title">
-            <span class="title-icon">⭐</span>模块3 拼音拼读（进阶篇）
-        </h2>
-        <!-- 专属教学引导 -->
-        <div class="teach-tip">
-            教学小课堂：声母+韵母拼一拼！前音轻短后音重，两音相连猛一碰，b+a=ba 就是这么简单~
-        </div>
+    <!-- 模块3：拼音拼读（核心应用） -->
+    <section class="pinyin-module">
+        <h2 class="module-title">模块3 - 拼音拼读</h2>
         <div class="spell-group">
             <span class="spell-item" data-pinyin="b">b</span>
             <span>+</span>
             <span class="spell-item" data-pinyin="a">a</span>
             <span>=</span>
-            <button class="spell-btn" data-s1="b" data-s2="a">拼读+跟读</button>
+            <button class="spell-btn" data-s1="b" data-s2="a">拼读音节</button>
         </div>
         <div class="spell-group">
             <span class="spell-item" data-pinyin="m">m</span>
             <span>+</span>
-            <span class="spell-item" data-pinyin="i">i</span>
+            <span class="spell-item" data-pinyin="a">a</span>
             <span>=</span>
-            <button class="spell-btn" data-s1="m" data-s2="i">拼读+跟读</button>
+            <button class="spell-btn" data-s1="m" data-s2="a">拼读音节</button>
         </div>
         <div class="spell-group">
             <span class="spell-item" data-pinyin="d">d</span>
             <span>+</span>
-            <span class="spell-item" data-pinyin="u">u</span>
+            <span class="spell-item" data-pinyin="i">i</span>
             <span>=</span>
-            <button class="spell-btn" data-s1="d" data-s2="u">拼读+跟读</button>
+            <button class="spell-btn" data-s1="d" data-s2="i">拼读音节</button>
         </div>
         <div class="spell-group">
             <span class="spell-item" data-pinyin="l">l</span>
             <span>+</span>
-            <span class="spell-item" data-pinyin="a">a</span>
+            <span class="spell-item" data-pinyin="i">i</span>
             <span>=</span>
-            <button class="spell-btn" data-s1="l" data-s2="a">拼读+跟读</button>
+            <button class="spell-btn" data-s1="l" data-s2="i">拼读音节</button>
         </div>
     </section>
 
-    <!-- 模块4 【检测】综合闯关 - 认读检测+拼读检测 带答题反馈 -->
-    <section class="pinyin-module module4">
-        <h2 class="module-title">
-            <span class="title-icon">🌱</span>模块4 综合闯关（检测篇）
-        </h2>
-        <!-- 专属教学+检测引导 -->
-        <div class="teach-tip">
-            检测小闯关：听完发音选答案，答对有奖励哦！一共2关，闯完看总分，宝宝加油~
-        </div>
-
-        <!-- 检测1：声母认读检测 -->
-        <div class="check-area">
-            <div class="check-title">第一关：听b的发音，选择正确拼音</div>
-            <button class="start-btn" onclick="playAudio('b')">点击听发音</button>
-            <div class="option-list">
-                <div class="option-item" onclick="checkAnswer(this, 'b', 1)">b</div>
-                <div class="option-item" onclick="checkAnswer(this, 'p', 1)">p</div>
-                <div class="option-item" onclick="checkAnswer(this, 'd', 1)">d</div>
-                <div class="option-item" onclick="checkAnswer(this, 'm', 1)">m</div>
-            </div>
-            <div class="result-box" id="result1"></div>
-        </div>
-
-        <!-- 检测2：拼音拼读检测 -->
-        <div class="check-area">
-            <div class="check-title">第二关：听ba的发音，选择正确音节</div>
-            <button class="start-btn" onclick="playAudio('ba')">点击听发音</button>
-            <div class="option-list">
-                <div class="option-item" onclick="checkAnswer(this, 'ba', 2)">b+a</div>
-                <div class="option-item" onclick="checkAnswer(this, 'ma', 2)">m+a</div>
-                <div class="option-item" onclick="checkAnswer(this, 'da', 2)">d+a</div>
-                <div class="option-item" onclick="checkAnswer(this, 'la', 2)">l+a</div>
-            </div>
-            <div class="result-box" id="result2"></div>
-        </div>
-
-        <!-- 检测结果汇总 -->
-        <div style="text-align: center; margin-top: 20px;">
-            <button class="result-btn" onclick="showTotalResult()">查看闯关总分</button>
-            <div class="result-box" id="totalResult" style="margin: 10px auto; max-width: 80%;"></div>
+    <!-- 模块4：趣味闯关（巩固练习） -->
+    <section class="pinyin-module">
+        <h2 class="module-title">模块4 - 趣味闯关</h2>
+        <div class="game-box">
+            <p class="game-tip">闯关规则：点击按钮，听发音找对应拼音（简易版）</p>
+            <button class="game-btn" onclick="alert('闯关开启！先听b的发音，找到对应拼音~')">开始第一关</button>
+            <button class="game-btn" onclick="alert('第二关：听a的发音，完成b+a拼读~')">开始第二关</button>
+            <button class="game-btn" onclick="alert('闯关成功！宝宝真棒~')">查看闯关结果</button>
         </div>
     </section>
 
     <script>
-        // 全局得分统计
-        let totalScore = 0;
-        // 核心发音函数（教学+检测通用）
+        // 核心发音函数（适配所有模块发音需求）
         function playAudio(pinyin) {
+            // 音频路径：当前html同目录下 建 assets/audio 文件夹放mp3（如b.mp3、ba.mp3）
             const audioUrl = `./assets/audio/${pinyin}.mp3`;
             const audio = new Audio(audioUrl);
             audio.play().catch(err => {
-                alert(`萌娃提示：暂无【${pinyin}】的发音音频，添加后就能跟读啦~`);
+                alert(`暂无【${pinyin}】的发音文件，添加后即可正常播放~`);
                 console.log(err);
             });
         }
 
-        // 教学模块 - 声母/韵母跟读
+        // 模块1、2 单个拼音发音（声母+韵母通用）
         document.querySelectorAll(".play-btn").forEach(btn => {
             btn.addEventListener("click", function() {
                 const targetPinyin = this.parentElement.dataset.pinyin;
@@ -473,7 +193,7 @@
             });
         });
 
-        // 教学模块 - 拼音拼读跟读
+        // 模块3 拼音拼读发音（两拼音节组合）
         document.querySelectorAll(".spell-btn").forEach(btn => {
             btn.addEventListener("click", function() {
                 const s1 = this.dataset.s1;
@@ -482,53 +202,6 @@
                 playAudio(combinePinyin);
             });
         });
-
-        // 检测模块 - 答题判断+结果反馈
-        function checkAnswer(option, correctVal, level) {
-            const resultBox = document.getElementById(`result${level}`);
-            resultBox.style.display = "block";
-            // 声母检测判断
-            if(level === 1) {
-                if(option.innerText === correctVal) {
-                    resultBox.className = "result-box correct";
-                    resultBox.innerText = "太棒啦！答对啦，声母认的真准~";
-                    totalScore += 50;
-                } else {
-                    resultBox.className = "result-box wrong";
-                    resultBox.innerText = "再试试吧！正确答案是 b 哦~";
-                }
-            }
-            // 拼读检测判断
-            if(level === 2) {
-                if(option.innerText === correctVal + "+a") {
-                    resultBox.className = "result-box correct";
-                    resultBox.innerText = "太厉害啦！拼读满分，宝宝超棒~";
-                    totalScore += 50;
-                } else {
-                    resultBox.className = "result-box wrong";
-                    resultBox.innerText = "加油呀！正确答案是 b+a 哦~";
-                }
-            }
-            // 禁用当前题所有选项，避免重复答题
-            const options = option.parentElement.querySelectorAll(".option-item");
-            options.forEach(item => item.style.pointerEvents = "none");
-        }
-
-        // 检测模块 - 总分汇总展示
-        function showTotalResult() {
-            const totalBox = document.getElementById("totalResult");
-            totalBox.style.display = "block";
-            if(totalScore === 100) {
-                totalBox.className = "result-box correct";
-                totalBox.innerText = "闯关满分100分！宝宝是拼音小能手，太优秀啦~";
-            } else if(totalScore === 50) {
-                totalBox.className = "result-box correct";
-                totalBox.innerText = "闯关得分50分！很棒哦，再练练就能拿满分啦~";
-            } else {
-                totalBox.className = "result-box wrong";
-                totalBox.innerText = "本次闯关0分，跟着教学模块多跟读几次，下次一定能通关~";
-            }
-        }
     </script>
 </body>
 </html>
